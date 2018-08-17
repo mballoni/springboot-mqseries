@@ -1,0 +1,12 @@
+ibm.mq:
+  queueManager: QueueManager
+  channel: DEV.ADMIN.SVRCONN
+  connName: localhost(1414)
+  user: admin
+  password: passw0rd
+
+queue.name: DEV.QUEUE.1
+
+management.endpoints.web.exposure.include: "*"
+
+management.endpoint.health.show-details: ALWAYS

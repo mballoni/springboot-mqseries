@@ -1,0 +1,15 @@
+version: '3'
+services:
+  MQSeries:
+    image: ibmcom/mq
+    container_name: mqseries
+    hostname: mqseries
+    ports:
+    - 1414:1414
+    - 9443:9443
+    volumes:
+    - ~/mqseries:/mnt/mq
+    environment:
+    - MQ_QMGR_NAME=QueueManager
+    - MQ_ADMIN_PASSWORD=passw0rd
+    - LICENSE=accept
