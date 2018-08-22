@@ -13,3 +13,16 @@ services:
     - MQ_QMGR_NAME=QueueManager
     - MQ_ADMIN_PASSWORD=passw0rd
     - LICENSE=accept
+  MYSQL:
+    image: mysql:8.0.11
+    hostname: mysql
+    ports:
+    - 3306:3306
+    volumes:
+    - ./.mysql:/var/lib/mysql
+    - ./../src/main/resource/database:/docker-entrypoint-initdb.d
+    environment:
+    - MYSQL_DATABASE=testbase
+    - MYSQL_USER=usr
+    - MYSQL_PASSWORD=pwd
+    - MYSQL_ROOT_PASSWORD=root
