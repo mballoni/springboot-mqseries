@@ -12,7 +12,6 @@ management.endpoints.web.exposure.include: "*"
 management.endpoint.health.show-details: ALWAYS
 spring:
   datasource:
-#    driver-class-name: com.mysql.jdbc.Driver
     username: usr
     password: pwd
     url: jdbc:mysql://localhost:3306/testbase
