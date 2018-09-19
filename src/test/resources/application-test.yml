@@ -1,0 +1,17 @@
+queue.name: DEV.QUEUE.1
+
+spring:
+  activemq:
+    broker-url: vm://embedded?broker.persistent=false,useShutdownHook=false
+    in-memory: true
+    non-blocking-redelivery: true
+  datasource:
+    username: sa
+    password:
+    url: jdbc:hsqldb:mem:testdb;sql.syntax_mys=true
+  autoconfigure:
+    exclude: com.ibm.mq.spring.boot.MQAutoConfiguration
+  jms:
+    template:
+      delivery-mode: non_persistent
+      qos-enabled: false

@@ -1,11 +1,9 @@
 package br.com.poc.jmsmqseries;
 
-import lombok.*;
+import lombok.ToString;
+import lombok.Value;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Value
 @ToString
 public class Email {
     private String destination;

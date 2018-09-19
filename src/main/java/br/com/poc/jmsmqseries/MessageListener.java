@@ -1,5 +1,6 @@
 package br.com.poc.jmsmqseries;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jms.annotation.JmsListener;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.jms.JMSException;
 import javax.jms.Session;
 
+@Slf4j
 @Component
 public class MessageListener {
 
@@ -17,10 +19,10 @@ public class MessageListener {
 
     @JmsListener(destination = "${queue.name}", containerFactory = "myFactory", concurrency = "5-10", id = "ListenerDEV1")
     public void receiveMessage(Email content, MessageHeaders headers, Session session) throws JMSException {
-        System.out.println(session.getAcknowledgeMode());
-        System.out.println("trace-id: " + headers.get("traceId"));
-        System.out.println("Received <" + content + ">");
+        log.info("Ack mode: {}", session.getAcknowledgeMode());
+        log.info("trace-id: {}", headers.get("traceId"));
+        log.info("Received <{}>", content);
 
-        jdbcTemplate.update("INSERT INTO emails (destionation, message) VALUE (?, ?)", content.getDestination(), content.getMessage());
+        jdbcTemplate.update("INSERT INTO emails (destination, message) VALUE (?, ?)", content.getDestination(), content.getMessage());
     }
 }
