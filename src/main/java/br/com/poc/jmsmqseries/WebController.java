@@ -1,5 +1,6 @@
 package br.com.poc.jmsmqseries;
 
+import io.micrometer.core.annotation.Timed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
@@ -24,10 +25,14 @@ public class WebController {
     @Value("${queue.name}")
     private String queueName;
 
+    @Timed("putTimer")
     @GetMapping("/put/{content}")
     public void put(@PathVariable("content") String content) {
 
         jmsTemplate.convertAndSend(queueName, new Email(content, content), ADD_TRACE_ID);
     }
 }
+
+
+
 

@@ -23,6 +23,6 @@ public class MessageListener {
         log.info("trace-id: {}", headers.get("traceId"));
         log.info("Received <{}>", content);
 
-        jdbcTemplate.update("INSERT INTO emails (destination, message) VALUE (?, ?)", content.getDestination(), content.getMessage());
+//        jdbcTemplate.update("INSERT INTO emails (destination, message) VALUE (?, ?)", content.getDestination(), content.getMessage());
     }
 }
