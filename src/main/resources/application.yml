@@ -4,14 +4,16 @@ ibm.mq:
   connName: localhost(1414)
   user: admin
   password: passw0rd
+  pool:
+    enabled: true
+    max-connections: 10
+    use-anonymous-producers: false
 
 queue.name: DEV.QUEUE.1
 
 management.endpoints.web.exposure.include: "*"
-
 management.endpoint.health.show-details: ALWAYS
-spring:
-  datasource:
-    username: usr
-    password: pwd
-    url: jdbc:mysql://localhost:3306/testbase
+
+
+server:
+  port: 8081
