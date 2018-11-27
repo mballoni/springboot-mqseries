@@ -5,7 +5,7 @@ ibm.mq:
   user: admin
   password: passw0rd
   pool:
-    enabled: true
+    enabled: false
     max-connections: 15
     use-anonymous-producers: true
     block-if-full-timeout: 30s
@@ -20,6 +20,10 @@ server:
 
 spring:
   jms:
+    cache:
+      enabled: true
+      producers: true
+      session-cache-size: 20
     template:
       delivery-mode: non_persistent
       qos-enabled: true
